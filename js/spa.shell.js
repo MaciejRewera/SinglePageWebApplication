@@ -40,7 +40,7 @@ spa.shell = (function () {
         copyAnchorMap, changeAnchorPart,
         setJqueryMap, toggleChat,
         onHashChange, onClickChat,
-        initShell;
+        initModule;
 
 
     /** Toolkit methods **/
@@ -57,7 +57,6 @@ spa.shell = (function () {
             $container : $container,
             $chat : $container.find('.spa-shell-chat')
         };
-        jqueryMap.$chat.attr('title', configMap.chatRetractedTitle);
     };
 
     toggleChat = function(doExtend, callback) {
@@ -183,21 +182,25 @@ spa.shell = (function () {
 
 
     /** Public methods **/
-    initShell = function ($container) {
+    initModule = function ($container) {
         stateMap.$container = $container;
         $container.html(configMap.mainHtml);
         setJqueryMap();
 
+        jqueryMap.$chat.attr('title', configMap.chatRetractedTitle);
         jqueryMap.$chat.click(onClickChat);
 
         $.uriAnchor.configModule({
             schema_map : configMap.anchorSchemaMap
         });
 
+        spa.chat.configModule( {} );
+        spa.chat.initModule(jqueryMap.$chat);
+
         $(window)
             .bind('hashchange', onHashChange)
             .trigger('hashchange');
     };
 
-    return { initShell : initShell };
+    return { initModule : initModule };
 })();
