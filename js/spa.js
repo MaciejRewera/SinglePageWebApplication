@@ -5,5 +5,5 @@ var spa = (function() {
         spa.shell.initModule($container);
     };
 
-    return { init: init };
+    return { init : init };
 })();
