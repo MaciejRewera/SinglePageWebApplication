@@ -103,8 +103,8 @@ spa.shell = (function () {
         _s_chatProposed = anchorMapProposed._s_chat;
 
         if ( !anchorMapPrevious || _s_chatPrevious !== _s_chatProposed ) {
-            s_chatProposed = anchorMapProposed.chat;
 
+            s_chatProposed = anchorMapProposed.chat;
             switch (s_chatProposed) {
                 case 'opened':
                     isOk = spa.chat.setSliderPosition('opened');
@@ -113,7 +113,7 @@ spa.shell = (function () {
                     isOk = spa.chat.setSliderPosition('closed');
                     break;
                 default:
-                    toggleChat(false);
+                    spa.chat.setSliderPosition('closed');
                     delete anchorMapProposed.chat;
                     $.uriAnchor.setAnchor(anchorMapProposed, null, true);
             }

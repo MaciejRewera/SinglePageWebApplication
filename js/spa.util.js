@@ -14,6 +14,10 @@ spa.util = (function () {
         return error;
     };
 
+    /** Could run twice through input_map.
+     * First time to check if all properties are allowed to be changed and the second time to update the config_map.
+     * This approach would save a module from being in inconsistent state.
+     */
     setConfigMap = function (arg_map) {
         var
             input_map = arg_map.input_map,

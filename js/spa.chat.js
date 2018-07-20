@@ -71,7 +71,7 @@ spa.chat = (function () {
 
     setJqueryMap = function() {
         var
-            $append_target = stateMap.$append_target;
+            $append_target = stateMap.$append_target,
             $slider = $append_target.find('.spa-chat');
 
         jqueryMap = {
